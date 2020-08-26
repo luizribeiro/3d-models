@@ -17,4 +17,11 @@ module calibration_stairs(
   }
 }
 
-calibration_stairs();
+translate([0, 0, 0]) calibration_stairs(step_height=0.05);
+translate([0, 20, 0]) calibration_stairs(step_height=0.1);
+translate([0, 40, 0]) calibration_stairs(step_height=0.2);
+translate([0, 60, 0]) calibration_stairs(step_height=0.5);
+translate([0, 80, 0]) calibration_stairs(step_height=1.0);
+translate([0, 100, 0]) calibration_stairs(step_height=2.0);
+translate([0, 120, 0]) calibration_stairs(step_height=3.0);
+translate([0, 140, 0]) calibration_stairs(step_height=5.0);
