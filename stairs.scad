@@ -17,6 +17,9 @@ module calibration_stairs(
         cylinder(r=rounded_corner_radius, h=step_height, $fn=100);
       }
     }
+
+    translate([-0.5, -0.5, base_height - 0.5])
+      cube([width + 0.5 * 2, depth + 0.5 * 2, 0.5]);
   }
 }
 
