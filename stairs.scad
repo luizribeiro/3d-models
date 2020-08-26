@@ -3,7 +3,7 @@ module calibration_stairs(
   depth = 10, // mm
   step_height = 1, // mm
   step_width = 5, // mm
-  rounded_corner_radius = 0 // mm
+  rounded_corner_radius = 0, // mm
 ) {
   translate([rounded_corner_radius, rounded_corner_radius, 0])
   union() {
