@@ -6,20 +6,26 @@ module calibration_stairs(
   rounded_corner_radius = 0, // mm
   base_height = 10, // mm
 ) {
-  translate([rounded_corner_radius, rounded_corner_radius, 0])
-  union() {
-    cube([width, depth, base_height]);
+  difference() {
+    translate([rounded_corner_radius, rounded_corner_radius, 0])
+    union() {
+      cube([width, depth, base_height]);
 
-    for (i = [0 : 1 : width / step_width]) {
-      translate([0, 0, base_height + step_height*i])
-      minkowski() {
-        cube([width - i * step_width, depth, step_height]);
-        cylinder(r=rounded_corner_radius, h=step_height, $fn=100);
+      for (i = [0 : 1 : width / step_width]) {
+        translate([0, 0, base_height + step_height*i])
+        minkowski() {
+          cube([width - i * step_width, depth, step_height]);
+          cylinder(r=rounded_corner_radius, h=step_height, $fn=100);
+        }
       }
+
+      translate([-0.5, -0.5, base_height - 0.5])
+        cube([width + 0.5 * 2, depth + 0.5 * 2, 0.5]);
     }
 
-    translate([-0.5, -0.5, base_height - 0.5])
-      cube([width + 0.5 * 2, depth + 0.5 * 2, 0.5]);
+    translate([2, 0, 2])
+      rotate(a=[90, 0, 0])
+      text(str(step_height, "mm steps"), size=5);
   }
 }
 
