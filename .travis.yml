@@ -1,0 +1,10 @@
+---
+language: python
+python:
+  - "3.8"
+before_install:
+  - sudo add-apt-repository -y ppa:chrysn/openscad
+install:
+  - sudo apt-get install -qq openscad
+script:
+  - openscad -o stairs.png stairs.scad

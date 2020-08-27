@@ -1,5 +1,7 @@
 # luizribeiro/3d-models
 
+[![Build Status](https://travis-ci.com/luizribeiro/3d-models.svg?branch=master)](https://travis-ci.com/luizribeiro/3d-models)
+
 This is a collection of 3D models designed by myself on
 [OpenSCAD](https://www.openscad.org/).
 
