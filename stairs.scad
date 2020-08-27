@@ -3,23 +3,17 @@ module calibration_stairs(
   depth = 10, // mm
   step_height = 1, // mm
   step_width = 5, // mm
-  rounded_corner_radius = 0, // mm
   base_height = 10, // mm
 ) {
   $fn = 100;
 
   difference() {
-    translate([rounded_corner_radius, rounded_corner_radius, 0])
     union() {
       cube([width, depth, base_height]);
 
       for (i = [1 : 1 : width / step_width]) {
-        translate([0, 0, base_height + step_height * (i - 1)]) {
-            minkowski() {
-              cube([width - (i - 1) * step_width, depth, step_height]);
-              cylinder(r=rounded_corner_radius, h=step_height);
-            }
-        }
+        translate([0, 0, base_height + step_height * (i - 1)])
+          cube([width - (i - 1) * step_width, depth, step_height]);
       }
 
       translate([-0.5, -0.5, base_height - 0.5])
