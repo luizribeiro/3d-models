@@ -6,16 +6,19 @@ module calibration_stairs(
   rounded_corner_radius = 0, // mm
   base_height = 10, // mm
 ) {
+  $fn = 100;
+
   difference() {
     translate([rounded_corner_radius, rounded_corner_radius, 0])
     union() {
       cube([width, depth, base_height]);
 
-      for (i = [0 : 1 : width / step_width]) {
-        translate([0, 0, base_height + step_height*i])
-        minkowski() {
-          cube([width - i * step_width, depth, step_height]);
-          cylinder(r=rounded_corner_radius, h=step_height, $fn=100);
+      for (i = [1 : 1 : width / step_width]) {
+        translate([0, 0, base_height + step_height * (i - 1)]) {
+            minkowski() {
+              cube([width - (i - 1) * step_width, depth, step_height]);
+              cylinder(r=rounded_corner_radius, h=step_height);
+            }
         }
       }
 
@@ -23,17 +26,21 @@ module calibration_stairs(
         cube([width + 0.5 * 2, depth + 0.5 * 2, 0.5]);
     }
 
-    translate([2, 0, 2])
-      rotate(a=[90, 0, 0])
-      text(str(step_height, "mm steps"), size=5);
+    for (i = [1 : 1 : width / step_width]) {
+      translate([
+        width - i * step_width + step_width / 2 + 0.5,
+        0.5,
+        base_height + step_height * i - 0.5,
+      ])
+        rotate(a=[0, 0, 90])
+        linear_extrude(height=2)
+        text(str(step_height * i + base_height, "mm"), size=1.5);
+    }
   }
 }
 
-translate([0, 0, 0]) calibration_stairs(step_height=0.05);
-translate([0, 20, 0]) calibration_stairs(step_height=0.1);
-translate([0, 40, 0]) calibration_stairs(step_height=0.2);
-translate([0, 60, 0]) calibration_stairs(step_height=0.5);
-translate([0, 80, 0]) calibration_stairs(step_height=1.0);
-translate([0, 100, 0]) calibration_stairs(step_height=2.0);
-translate([0, 120, 0]) calibration_stairs(step_height=3.0);
-translate([0, 140, 0]) calibration_stairs(step_height=5.0);
+if (step_height) {
+  calibration_stairs(step_height=step_height);
+} else {
+  calibration_stairs(step_height=1.0);
+}
