@@ -33,8 +33,8 @@ difference() {
   // Cut out notches on corners for blind lip.
   color("magenta")
     translate([-((block_x - 2.5)/2), ((block_y - 2.5)/2), 0])
-    cylinder(r= (2.5/1), h=block_z, center=true, $fn=100);
+    cylinder(r=3, h=block_z, center=true, $fn=100);
   color("magenta")
     translate([-((block_x - 2.5)/2), -((block_y - 2.5)/2), 0])
-    cylinder(r= (2.5/1), h=block_z, center=true, $fn=100);
+    cylinder(r=3, h=block_z, center=true, $fn=100);
 }
