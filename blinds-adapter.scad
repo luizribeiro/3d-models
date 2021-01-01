@@ -12,5 +12,5 @@ difference() {
 
   // motor shaft
   translate([-6/2, -3.5/2, 0])
-    cube([6, 3.5, 7]);
+    cube([6, 3.0, 7]);
 }
