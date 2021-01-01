@@ -7,8 +7,8 @@ difference() {
   cylinder(18, 7, 7);
 
   // blinds shaft
-  translate([-11/2, -4.5/2, 13])
-    cube([11, 4.5, 5]);
+  translate([-11/2, -4.5/2, 10])
+    cube([11, 4.5, 8]);
 
   // motor shaft
   translate([-6/2, -3.5/2, 0])
