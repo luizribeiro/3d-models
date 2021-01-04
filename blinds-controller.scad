@@ -8,6 +8,7 @@ pcb_hole_diameter = 2;
 screw_hole_diameter = 2.2;
 hole_dist_from_edge = 0.75 + pcb_hole_diameter/2;
 standoff_diameter = 4;
+hex_nut_diameter = 4.33;
 
 $fn = 100;
 
@@ -22,7 +23,7 @@ module standoff() {
 
 module nut_hole() {
   union() {
-    cylinder($fn=6, r=1.66, h=1.5);
+    cylinder($fn=6, r=hex_nut_diameter/sqrt(3), h=2);
     cylinder(d=screw_hole_diameter, h=case_thickness);
   }
 }
@@ -44,7 +45,7 @@ union() {
       cube([
         pcb_width + 2,
         pcb_height + 2,
-        standoff_height + edge_height - 1,
+        standoff_height + edge_height,
       ]);
 
     /* nut holes */
