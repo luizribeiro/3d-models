@@ -28,53 +28,57 @@ module nut_hole() {
   }
 }
 
-union() {
-  difference() {
-    cube([
-      pcb_width + case_thickness * 2,
-      pcb_height + case_thickness * 2,
-      case_thickness + standoff_height + edge_height,
-    ]);
-    translate([case_thickness, case_thickness, case_thickness])
+module controller() {
+  union() {
+    difference() {
       cube([
-        pcb_width,
-        pcb_height,
-        standoff_height + edge_height,
+        pcb_width + case_thickness * 2,
+        pcb_height + case_thickness * 2,
+        case_thickness + standoff_height + edge_height,
       ]);
-    translate([case_thickness - 1, case_thickness - 1, case_thickness])
-      cube([
-        pcb_width + 2,
-        pcb_height + 2,
-        standoff_height + edge_height,
-      ]);
+      translate([case_thickness, case_thickness, case_thickness])
+        cube([
+          pcb_width,
+          pcb_height,
+          standoff_height + edge_height,
+        ]);
+      translate([case_thickness - 1, case_thickness - 1, case_thickness])
+        cube([
+          pcb_width + 2,
+          pcb_height + 2,
+          standoff_height + edge_height,
+        ]);
 
-    /* nut holes */
-    translate([case_thickness, case_thickness, 0]) {
-      translate([hole_dist_from_edge, hole_dist_from_edge, 0])
-        nut_hole();
+      /* nut holes */
+      translate([case_thickness, case_thickness, 0]) {
+        translate([hole_dist_from_edge, hole_dist_from_edge, 0])
+          nut_hole();
+        translate([pcb_width - hole_dist_from_edge, hole_dist_from_edge, 0])
+          nut_hole();
+        translate([
+          pcb_width - hole_dist_from_edge,
+          pcb_height - hole_dist_from_edge,
+          0,
+        ]) nut_hole();
+        translate([hole_dist_from_edge, pcb_height - hole_dist_from_edge, 0])
+          nut_hole();
+      }
+    }
+
+    /* standoffs */
+    translate([case_thickness, case_thickness, case_thickness]) {
+      translate([hole_dist_from_edge, hole_dist_from_edge, 0]) standoff();
       translate([pcb_width - hole_dist_from_edge, hole_dist_from_edge, 0])
-        nut_hole();
+        standoff();
       translate([
         pcb_width - hole_dist_from_edge,
         pcb_height - hole_dist_from_edge,
         0,
-      ]) nut_hole();
+      ]) standoff();
       translate([hole_dist_from_edge, pcb_height - hole_dist_from_edge, 0])
-        nut_hole();
+        standoff();
     }
   }
-
-  /* standoffs */
-  translate([case_thickness, case_thickness, case_thickness]) {
-    translate([hole_dist_from_edge, hole_dist_from_edge, 0]) standoff();
-    translate([pcb_width - hole_dist_from_edge, hole_dist_from_edge, 0])
-      standoff();
-    translate([
-      pcb_width - hole_dist_from_edge,
-      pcb_height - hole_dist_from_edge,
-      0,
-    ]) standoff();
-    translate([hole_dist_from_edge, pcb_height - hole_dist_from_edge, 0])
-      standoff();
-  }
 }
+
+controller();
