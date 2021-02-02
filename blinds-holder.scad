@@ -1,5 +1,6 @@
 use <blinds-controller.scad>;
 use <blinds-large-bar.scad>;
+use <blinds-motor-case.scad>;
 
 pcb_width = 70;
 pcb_height = 50;
@@ -39,4 +40,11 @@ union() {
     rotate([0, -90, 0])
     rotate([0, 0, 90])
     filled_large_bar();
+
+  // uncomment this if you want to see the motor in place
+  /*
+  translate([screw_bar_height * 7 / 8, pcb_height / 2 + case_thickness, 0])
+    rotate([0, -90, 0])
+    motor_case();
+  */
 }
