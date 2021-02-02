@@ -17,7 +17,7 @@ module screw_gap() {
   nut_hole_diameter = 5.2;
 
   screw_hole_thickness = 6.5;
-  screw_hole_diameter = 2.8;
+  screw_hole_diameter = 2.2;
 
   // sum all thickness = 12.2
 
