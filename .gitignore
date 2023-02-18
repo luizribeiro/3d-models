@@ -1,3 +1,5 @@
 *.ctb
 *.stl
 .DS_Store
+!dependencies/*.stl
+output/
