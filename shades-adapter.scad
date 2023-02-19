@@ -1,4 +1,10 @@
-$fn = 250;
+$fn = 25;
+
+// height of cylinders = 15mm
+// height of inner cylinder (hole) = 7.5mm
+// diamater of outer cylinder = 35.25mm
+// diameter of inner cylinder (hole) = 24mm
+// notches inner cylinder = 29.5mm
 
 module cyl()
 {
