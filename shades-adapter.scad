@@ -1,17 +1,18 @@
-$fn = 25;
+$fn = 250;
 
-// height of cylinders = 15mm
-// height of inner cylinder (hole) = 7.5mm
-// diamater of outer cylinder = 35.25mm
-// diameter of inner cylinder (hole) = 24mm
-// notches inner cylinder = 29.5mm
+CYLINDER_HEIGHT = 15;
+OUTER_DIAMETER = 35;
+INNER_CYLINDER_DIAMETER = 23.66;
+NOTCHES_INNER_CYLINDER_DIAMETER = 29.7;
+SHAFT_HOLE_DIAMETER = 6.3;
+SHAFT_HOLE_WIDTH = 4.5;
 
-module cyl()
+module cyl(h = CYLINDER_HEIGHT)
 {
     difference()
     {
-        cylinder(r = 2, h = 1, center = true);
-        translate([ 0, 0, 0.5 ]) cylinder(r = 1.5, h = 1, center = true);
+        cylinder(r = OUTER_DIAMETER / 2, h = h, center = true);
+        translate([ 0, 0, h / 4 ]) cylinder(r = INNER_CYLINDER_DIAMETER / 2, h = h / 2 + 0.1, center = true);
     }
 }
 
@@ -19,19 +20,26 @@ module shaft_hole()
 {
     intersection()
     {
-        cylinder(r = 0.5, h = 10, center = true);
-        cube([ 0.5, 2, 2 ], center = true);
+        cylinder(r = SHAFT_HOLE_DIAMETER / 2, h = 100, center = true);
+        cube([ SHAFT_HOLE_WIDTH, 100, 100 ], center = true);
     }
 }
 
-module notch(a)
+module notch(a, d = 36, h = 16)
 {
     difference()
     {
-        cylinder(r = 2.25, h = 5, center = true);
-        translate([ 0, -3.5, -3.5 ]) cube([ 10, 10, 10 ]);
-        rotate(a = 180 - a) translate([ 0, -3.5, -3.5 ]) cube([ 10, 10, 10 ]);
+        cylinder(r = d / 2, h = h, center = true);
+        translate([ 0, -d / 2, -h - 0.1 ]) cube([ d, d, d ]);
+        rotate(a = 180 - a) translate([ 0, -d / 2, -h - 0.1 ]) cube([ d, d, d ]);
     }
+}
+
+module notch_group()
+{
+    rotate(a = 35/2) notch(a = 35);
+    rotate(a = 90 - 18.91 / 2) notch(a = 5.24);
+    rotate(a = 90 + 18.91 / 2 + 5.24 / 2) notch(a = 5.24);
 }
 
 module notches()
@@ -40,12 +48,11 @@ module notches()
     {
         union()
         {
-            notch(a = 45);
-            rotate(a = 90) notch(a = 45);
-            rotate(a = 180) notch(a = 45);
-            rotate(a = 270) notch(a = 45);
+            notch_group();
+            rotate(a = 180) notch_group();
+            rotate(a = 141) notch(a = 21.74);
         }
-        cylinder(r = 1.75, h = 10, center = true);
+        cylinder(r = NOTCHES_INNER_CYLINDER_DIAMETER / 2 + 0.1, h = 100, center = true);
     }
 }
 
