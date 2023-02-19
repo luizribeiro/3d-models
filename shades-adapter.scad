@@ -7,6 +7,11 @@ NOTCHES_INNER_CYLINDER_DIAMETER = 29.7;
 SHAFT_HOLE_DIAMETER = 6.3;
 SHAFT_HOLE_WIDTH = 4.5;
 
+BIG_NOTCH_ANGLE = 35;
+MID_NOTCH_ANGLE = 21.74;
+SMALL_NOTCH_ANGLE = 6;
+NOTCH_ANGLE_DISTANCE = 18.91;
+
 module cyl(h = CYLINDER_HEIGHT)
 {
     difference()
@@ -37,9 +42,9 @@ module notch(a, d = 36, h = 16)
 
 module notch_group()
 {
-    rotate(a = 35/2) notch(a = 35);
-    rotate(a = 90 - 18.91 / 2) notch(a = 5.24);
-    rotate(a = 90 + 18.91 / 2 + 5.24 / 2) notch(a = 5.24);
+    rotate(a = BIG_NOTCH_ANGLE / 2) notch(a = BIG_NOTCH_ANGLE);
+    rotate(a = 90 - NOTCH_ANGLE_DISTANCE / 2) notch(a = SMALL_NOTCH_ANGLE);
+    rotate(a = 90 + SMALL_NOTCH_ANGLE + NOTCH_ANGLE_DISTANCE / 2) notch(a = SMALL_NOTCH_ANGLE);
 }
 
 module notches()
@@ -50,7 +55,7 @@ module notches()
         {
             notch_group();
             rotate(a = 180) notch_group();
-            rotate(a = 141) notch(a = 21.74);
+            rotate(a = 142) notch(a = MID_NOTCH_ANGLE);
         }
         cylinder(r = NOTCHES_INNER_CYLINDER_DIAMETER / 2 + 0.1, h = 100, center = true);
     }
