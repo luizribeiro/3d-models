@@ -12,6 +12,11 @@ HOOK_LENGTH = 11.8;
 HOOKS_DISTANCE = 19.3;
 HOOK_GAP = 2.12;
 
+CONNECTOR_DIAMETER = 6.25;
+
+PLATE_GAP_WIDTH = 5.8;
+PLATE_GAP_HEIGHT = 1.8;
+
 module screw_hole()
 {
     translate([ 0, PLATE_DIAMETER / 2 - SCREW_HOLE_DISTANCE - SCREW_HOLE_DIAMETER_BOTTOM / 2, 0 ])
@@ -35,10 +40,18 @@ difference()
     rotate(a = 0) screw_hole();
     rotate(a = 120) screw_hole();
     rotate(a = 240) screw_hole();
+    // gap for led
+    translate([ 0, -PLATE_DIAMETER / 2 + PLATE_GAP_HEIGHT / 2, 0 ])
+        cube([ PLATE_GAP_WIDTH, PLATE_GAP_HEIGHT, PLATE_WIDTH + epsilon ], center = true);
+    // gap for on/off switch
+    rotate(a = -35)
+    translate([ 0, -PLATE_DIAMETER / 2 + PLATE_GAP_HEIGHT / 2, 0 ])
+        cube([ PLATE_GAP_WIDTH, PLATE_GAP_HEIGHT, PLATE_WIDTH + epsilon ], center = true);
 }
 
-translate([ 0, -HOOK_GAP, 0 ])
+translate([ 0, -HOOK_GAP / 2, 0 ])
 {
     translate([ HOOKS_DISTANCE / 2 + HOOK_WIDTH / 2, 0, PLATE_WIDTH / 2 + HOOK_HEIGHT / 2 ]) hook();
     translate([ -HOOKS_DISTANCE / 2 - HOOK_WIDTH / 2, 0, PLATE_WIDTH / 2 + HOOK_HEIGHT / 2 ]) hook();
+    translate([ 0, 0, PLATE_WIDTH / 2 ]) cylinder(r = CONNECTOR_DIAMETER / 2, h = HOOK_HEIGHT);
 }
