@@ -10,7 +10,9 @@ HOOK_HEIGHT = 4.4;
 HOOK_WIDTH = 4.1;
 HOOK_LENGTH = 11.8;
 HOOKS_DISTANCE = 19.3;
-HOOK_GAP = 2.12;
+HOOK_GAP_LENGTH = 2.12;
+HOOK_GAP_HEIGHT_LARGE = 2;
+HOOK_GAP_HEIGHT_SMALL = 1.6;
 
 CONNECTOR_DIAMETER = 6.25;
 
@@ -29,8 +31,16 @@ module hook()
     difference()
     {
         cube([ HOOK_WIDTH, HOOK_LENGTH, HOOK_HEIGHT ], center = true);
-        translate([ 0, -HOOK_LENGTH / 2 + HOOK_GAP / 2, -HOOK_HEIGHT / 2 + HOOK_GAP / 2 ])
-            cube([ HOOK_WIDTH + epsilon, HOOK_GAP + epsilon, HOOK_GAP + epsilon ], center = true);
+        translate([
+            -HOOK_WIDTH / 2 - epsilon / 2, -HOOK_LENGTH / 2 - epsilon,
+            // FIXME: this looks wrong and breaks when we change gap heights
+            -HOOK_GAP_HEIGHT_LARGE - (HOOK_GAP_HEIGHT_LARGE - HOOK_GAP_HEIGHT_SMALL) / 2 -
+            epsilon
+        ]) rotate([ 90, 0, 0 ]) rotate([ 0, 90, 0 ]) linear_extrude(height = HOOK_WIDTH + epsilon)
+            polygon(points = [
+                [ 0, 0 ], [ 0, HOOK_GAP_HEIGHT_LARGE ], [ HOOK_GAP_LENGTH, HOOK_GAP_HEIGHT_SMALL ],
+                [ HOOK_GAP_LENGTH, 0 ]
+            ]);
     }
 }
 
@@ -44,12 +54,11 @@ difference()
     translate([ 0, -PLATE_DIAMETER / 2 + PLATE_GAP_HEIGHT / 2, 0 ])
         cube([ PLATE_GAP_WIDTH, PLATE_GAP_HEIGHT, PLATE_WIDTH + epsilon ], center = true);
     // gap for on/off switch
-    rotate(a = -35)
-    translate([ 0, -PLATE_DIAMETER / 2 + PLATE_GAP_HEIGHT / 2, 0 ])
+    rotate(a = -35) translate([ 0, -PLATE_DIAMETER / 2 + PLATE_GAP_HEIGHT / 2, 0 ])
         cube([ PLATE_GAP_WIDTH, PLATE_GAP_HEIGHT, PLATE_WIDTH + epsilon ], center = true);
 }
 
-translate([ 0, -HOOK_GAP / 2, 0 ])
+translate([ 0, -HOOK_GAP_LENGTH / 2, 0 ])
 {
     translate([ HOOKS_DISTANCE / 2 + HOOK_WIDTH / 2, 0, PLATE_WIDTH / 2 + HOOK_HEIGHT / 2 ]) hook();
     translate([ -HOOKS_DISTANCE / 2 - HOOK_WIDTH / 2, 0, PLATE_WIDTH / 2 + HOOK_HEIGHT / 2 ]) hook();
