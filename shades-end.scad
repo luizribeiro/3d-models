@@ -50,11 +50,17 @@ difference()
     rotate(a = 0) screw_hole();
     rotate(a = 120) screw_hole();
     rotate(a = 240) screw_hole();
-    // gap for led
+    // gaps for led and on/off switch
+    // TODO: turn this into an arc
     translate([ 0, -PLATE_DIAMETER / 2 + PLATE_GAP_HEIGHT / 2, 0 ])
         cube([ PLATE_GAP_WIDTH, PLATE_GAP_HEIGHT, PLATE_WIDTH + epsilon ], center = true);
-    // gap for on/off switch
-    rotate(a = -35) translate([ 0, -PLATE_DIAMETER / 2 + PLATE_GAP_HEIGHT / 2, 0 ])
+    rotate(a = -10) translate([ 0, -PLATE_DIAMETER / 2 + PLATE_GAP_HEIGHT / 2, 0 ])
+        cube([ PLATE_GAP_WIDTH, PLATE_GAP_HEIGHT, PLATE_WIDTH + epsilon ], center = true);
+    rotate(a = -20) translate([ 0, -PLATE_DIAMETER / 2 + PLATE_GAP_HEIGHT / 2, 0 ])
+        cube([ PLATE_GAP_WIDTH, PLATE_GAP_HEIGHT, PLATE_WIDTH + epsilon ], center = true);
+    rotate(a = -30) translate([ 0, -PLATE_DIAMETER / 2 + PLATE_GAP_HEIGHT / 2, 0 ])
+        cube([ PLATE_GAP_WIDTH, PLATE_GAP_HEIGHT, PLATE_WIDTH + epsilon ], center = true);
+    rotate(a = -40) translate([ 0, -PLATE_DIAMETER / 2 + PLATE_GAP_HEIGHT / 2, 0 ])
         cube([ PLATE_GAP_WIDTH, PLATE_GAP_HEIGHT, PLATE_WIDTH + epsilon ], center = true);
 }
 
@@ -62,5 +68,5 @@ translate([ 0, -HOOK_GAP_LENGTH / 2, 0 ])
 {
     translate([ HOOKS_DISTANCE / 2 + HOOK_WIDTH / 2, 0, PLATE_WIDTH / 2 + HOOK_HEIGHT / 2 ]) hook();
     translate([ -HOOKS_DISTANCE / 2 - HOOK_WIDTH / 2, 0, PLATE_WIDTH / 2 + HOOK_HEIGHT / 2 ]) hook();
-    translate([ 0, 0, PLATE_WIDTH / 2 ]) cylinder(r = CONNECTOR_DIAMETER / 2, h = HOOK_HEIGHT);
 }
+translate([ 0, 0, PLATE_WIDTH / 2 ]) cylinder(r = CONNECTOR_DIAMETER / 2, h = HOOK_HEIGHT);
