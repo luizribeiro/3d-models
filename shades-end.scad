@@ -1,10 +1,10 @@
 $fn = 250;
 epsilon = 0.01;
-PLATE_DIAMETER = 42.7;
+PLATE_DIAMETER = 42.6;
 PLATE_WIDTH = 2.0;
 SCREW_HOLE_DIAMETER_TOP = 4.97;
 SCREW_HOLE_DIAMETER_BOTTOM = 3.01;
-SCREW_HOLE_DISTANCE = 1.65;
+SCREW_HOLE_DISTANCE = 1.55;
 
 HOOK_HEIGHT = 4.4;
 HOOK_WIDTH = 4.1;
@@ -39,6 +39,6 @@ difference()
 
 translate([ 0, -HOOK_GAP, 0 ])
 {
-    translate([ HOOKS_DISTANCE / 2 - HOOK_WIDTH / 2, 0, PLATE_WIDTH / 2 + HOOK_HEIGHT / 2 ]) hook();
-    translate([ -HOOKS_DISTANCE / 2 + HOOK_WIDTH / 2, 0, PLATE_WIDTH / 2 + HOOK_HEIGHT / 2 ]) hook();
+    translate([ HOOKS_DISTANCE / 2 + HOOK_WIDTH / 2, 0, PLATE_WIDTH / 2 + HOOK_HEIGHT / 2 ]) hook();
+    translate([ -HOOKS_DISTANCE / 2 - HOOK_WIDTH / 2, 0, PLATE_WIDTH / 2 + HOOK_HEIGHT / 2 ]) hook();
 }
