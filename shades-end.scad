@@ -10,14 +10,14 @@ HOOK_HEIGHT = 4.4;
 HOOK_WIDTH = 4.1;
 HOOK_LENGTH = 11.8;
 HOOKS_DISTANCE = 19.3;
-HOOK_GAP_LENGTH = 2.12;
-HOOK_GAP_HEIGHT_LARGE = 2;
-HOOK_GAP_HEIGHT_SMALL = 1.6;
+HOOK_GAP_LENGTH = 2.5;
+HOOK_GAP_HEIGHT_LARGE = 2.5;
+HOOK_GAP_HEIGHT_SMALL = 2;
 
 CONNECTOR_DIAMETER = 6.25;
 
 PLATE_GAP_WIDTH = 5.8;
-PLATE_GAP_HEIGHT = 1.8;
+PLATE_GAP_HEIGHT = 2;
 
 module screw_hole()
 {
@@ -34,7 +34,7 @@ module hook()
         translate([
             -HOOK_WIDTH / 2 - epsilon / 2, -HOOK_LENGTH / 2 - epsilon,
             // FIXME: this looks wrong and breaks when we change gap heights
-            -HOOK_GAP_HEIGHT_LARGE - (HOOK_GAP_HEIGHT_LARGE - HOOK_GAP_HEIGHT_SMALL) / 2 -
+            -HOOK_HEIGHT / 2 -
             epsilon
         ]) rotate([ 90, 0, 0 ]) rotate([ 0, 90, 0 ]) linear_extrude(height = HOOK_WIDTH + epsilon)
             polygon(points = [
@@ -69,4 +69,8 @@ translate([ 0, -HOOK_GAP_LENGTH / 2, 0 ])
     translate([ HOOKS_DISTANCE / 2 + HOOK_WIDTH / 2, 0, PLATE_WIDTH / 2 + HOOK_HEIGHT / 2 ]) hook();
     translate([ -HOOKS_DISTANCE / 2 - HOOK_WIDTH / 2, 0, PLATE_WIDTH / 2 + HOOK_HEIGHT / 2 ]) hook();
 }
-translate([ 0, 0, PLATE_WIDTH / 2 ]) cylinder(r = CONNECTOR_DIAMETER / 2, h = HOOK_HEIGHT);
+translate([ 0, 0, PLATE_WIDTH / 2 ]) difference()
+{
+    sphere(r = CONNECTOR_DIAMETER / 2);
+    translate([ 0, 0, -CONNECTOR_DIAMETER / 2 ]) cube(CONNECTOR_DIAMETER, center = true);
+}
