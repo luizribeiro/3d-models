@@ -1,7 +1,7 @@
 EPS = 0.01;
 
 module hsw_plug() {
-  PLUG_HEIGHT = 13.4;
+  PLUG_HEIGHT = 13.3;
   PLUG_LENGTH = 10;
   PLUG_CIRCUMCIRCLE_RADIUS = PLUG_HEIGHT * sqrt(3) / 3;
 
