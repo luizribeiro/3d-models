@@ -1,3 +1,5 @@
+include <BOSL2/std.scad>
+
 EPS = 0.01;
 
 module hsw_plug() {

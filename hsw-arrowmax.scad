@@ -1,4 +1,3 @@
-include <BOSL2/std.scad>
 include <lib/hsw.scad>
 
 $fn = $preview ? 20 : 100;
