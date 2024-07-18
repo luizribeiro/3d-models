@@ -32,14 +32,14 @@ module hsw_box(
 
   difference() {
     cuboid(
-        [inner_width + thickness, inner_depth + thickness, inner_height + thickness], rounding=1,
+        [inner_width + thickness * 2, inner_depth + thickness * 2, inner_height + thickness * 2], rounding=1,
         edges=edges,
         anchor=BOTTOM
     ) {
       position(BACK) orient(BACK) hsw_plug();
     };
 
-    up(thickness) {
+    up(thickness * 2) {
       cuboid(
           [inner_width, inner_depth, inner_height + EPS], rounding=1,
           edges=edges,
