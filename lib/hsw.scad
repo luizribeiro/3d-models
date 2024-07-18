@@ -51,3 +51,9 @@ module hsw_box(
     }
   }
 }
+
+module hsw_hook() {
+  cylinder(h=10, r=5, anchor=BOTTOM) {
+    position(TOP) hsw_plug();
+  }
+}

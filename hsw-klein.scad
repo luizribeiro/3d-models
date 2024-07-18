@@ -1,6 +1,5 @@
+include <lib/base.scad>
 include <lib/hsw.scad>
-
-$fn = $preview ? 20 : 100;
 
 hsw_box(
   inner_width = 65.5,
