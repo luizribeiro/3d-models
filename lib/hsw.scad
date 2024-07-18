@@ -17,7 +17,8 @@ module hsw_box(
   inner_width = 65.5,
   inner_height = 24,
   inner_depth = 40,
-  thickness = 2
+  thickness = 2,
+  corner_radius = 1
 ) {
   edges = [
     BOTTOM + FRONT,
@@ -32,7 +33,7 @@ module hsw_box(
 
   difference() {
     cuboid(
-        [inner_width + thickness * 2, inner_depth + thickness * 2, inner_height + thickness * 2], rounding=1,
+        [inner_width + thickness * 2, inner_depth + thickness * 2, inner_height + thickness * 2], rounding=corner_radius,
         edges=edges,
         anchor=BOTTOM
     ) {
@@ -41,7 +42,7 @@ module hsw_box(
 
     up(thickness * 2) {
       cuboid(
-          [inner_width, inner_depth, inner_height + EPS], rounding=1,
+          [inner_width, inner_depth, inner_height + EPS], rounding=corner_radius,
           edges=edges,
           anchor=BOTTOM
       );
