@@ -15,12 +15,12 @@ module hsw_plug() {
   );
 }
 
-module hsw_box(
-  inner_width = 65.5,
-  inner_height = 24,
-  inner_depth = 40,
-  thickness = 2,
-  corner_radius = 1
+module box_container(
+  inner_width,
+  inner_height,
+  inner_depth,
+  thickness,
+  corner_radius,
 ) {
   edges = [
     BOTTOM + FRONT,
@@ -38,9 +38,7 @@ module hsw_box(
         [inner_width + thickness * 2, inner_depth + thickness * 2, inner_height + thickness * 2], rounding=corner_radius,
         edges=edges,
         anchor=BOTTOM
-    ) {
-      position(BACK) orient(BACK) hsw_plug();
-    };
+    ) children();
 
     up(thickness * 2) {
       cuboid(
@@ -49,6 +47,24 @@ module hsw_box(
           anchor=BOTTOM
       );
     }
+  }
+}
+
+module hsw_box(
+  inner_width = 65.5,
+  inner_height = 24,
+  inner_depth = 40,
+  thickness = 2,
+  corner_radius = 1,
+) {
+  box_container(
+    inner_width,
+    inner_height,
+    inner_depth,
+    thickness,
+    corner_radius
+  ) {
+      position(BACK) orient(BACK) hsw_plug();
   }
 }
 
