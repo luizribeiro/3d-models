@@ -1,4 +1,5 @@
 include <BOSL2/std.scad>
+include <BOSL2/rounding.scad>
 
 EPS = 0.01;
 
@@ -12,7 +13,7 @@ module hsw_plug() {
     h=PLUG_LENGTH,
     anchor=BOTTOM,
     $fn=6
-  );
+  ) children();
 }
 
 module box_container(
@@ -64,12 +65,13 @@ module hsw_box(
     thickness,
     corner_radius
   ) {
-      position(BACK) orient(BACK) hsw_plug();
+    position(BACK) orient(BACK) hsw_plug();
   }
 }
 
-module hsw_hook() {
-  cylinder(h=10, r=5, anchor=BOTTOM) {
-    position(TOP) hsw_plug();
+module hsw_hook(path, radius) {
+  hsw_plug() {
+    attach(TOP, TOP)
+      zrot(90) xrot(90) path_extrude(smooth_path(path, size=1)) circle(r=radius, $fn=100);
   }
 }
