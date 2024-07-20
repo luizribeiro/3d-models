@@ -7,14 +7,16 @@ INF = 1e4;
 module hsw_plug() {
   PLUG_HEIGHT = 13.3;
   PLUG_LENGTH = 10;
-  PLUG_CIRCUMCIRCLE_RADIUS = PLUG_HEIGHT * sqrt(3) / 3;
 
-  cylinder(
-    r=PLUG_CIRCUMCIRCLE_RADIUS,
-    h=PLUG_LENGTH,
-    anchor=BOTTOM,
-    $fn=6
-  ) children();
+  PLUG_CIRCUMCIRCLE_RADIUS = PLUG_HEIGHT * sqrt(3) / 3;
+  path = [
+    for (i = [0:5]) [
+      PLUG_CIRCUMCIRCLE_RADIUS * cos(i * 60),
+      PLUG_CIRCUMCIRCLE_RADIUS * sin(i * 60)
+    ]
+  ];
+
+  linear_sweep(make_region(path), height=PLUG_LENGTH) children();
 }
 
 module box_container(
@@ -73,6 +75,6 @@ module hsw_box(
 module hsw_hook(path, radius) {
   hsw_plug() {
     attach(TOP, TOP)
-      zrot(90) xrot(90) path_extrude(smooth_path(path, size=1)) circle(r=radius, $fn=100);
+      zrot(90) xrot(90) path_extrude(smooth_path(path, size=1)) circle(r=radius);
   }
 }

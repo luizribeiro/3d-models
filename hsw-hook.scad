@@ -1,8 +1,6 @@
 include <lib/base.scad>
 include <lib/hsw.scad>
 
-$fn=100;
-
 hsw_hook(
   path=[
     [0, 0],
