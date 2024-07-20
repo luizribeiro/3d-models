@@ -2,6 +2,7 @@ include <BOSL2/std.scad>
 include <BOSL2/rounding.scad>
 
 EPS = 0.01;
+INF = 1e4;
 
 module hsw_plug() {
   PLUG_HEIGHT = 13.3;
