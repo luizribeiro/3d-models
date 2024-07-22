@@ -21,14 +21,8 @@ difference() {
     corner_radius = 2,
     separator_width = SEPARATOR_WIDTH
   ) {
-    left(HSW_X_DISTANCE) {
-      up(HSW_Y_DISTANCE/2) position(BACK) orient(BACK) hsw_plug();
-      down(HSW_Y_DISTANCE/2) position(BACK) orient(BACK) hsw_plug();
-    }
-    right(HSW_X_DISTANCE) {
-      up(HSW_Y_DISTANCE/2) position(BACK) orient(BACK) hsw_plug();
-      down(HSW_Y_DISTANCE/2) position(BACK) orient(BACK) hsw_plug();
-    }
+    left(HSW_X_DISTANCE) position(BACK) orient(BACK) hsw_vertical_plugs(2);
+    right(HSW_X_DISTANCE) position(BACK) orient(BACK) hsw_vertical_plugs(2);
   }
 
   xrot(20) up(BOX_HEIGHT * 0.8) cube([INF, INF, INF], anchor=BOTTOM);

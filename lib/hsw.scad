@@ -19,6 +19,26 @@ module hsw_plug() {
   linear_sweep(make_region(path), height=PLUG_LENGTH) children();
 }
 
+module hsw_horizontally_spaced(num) {
+  x_offset = (num - 1) * HSW_X_DISTANCE / 2;
+  for (i = [0:num-1])
+    translate([i * HSW_X_DISTANCE - x_offset, 0, 0]) children();
+}
+
+module hsw_vertically_spaced(num) {
+  y_offset = (num - 1) * HSW_Y_DISTANCE / 2;
+  for (i = [0:num-1])
+    translate([0, i * HSW_Y_DISTANCE - y_offset, 0]) children();
+}
+
+module hsw_horizontal_plugs(num_plugs) {
+  hsw_horizontally_spaced(num_plugs) hsw_plug();
+}
+
+module hsw_vertical_plugs(num_plugs) {
+  hsw_vertically_spaced(num_plugs) hsw_plug();
+}
+
 module hsw_box(
   inner_width = 65.5,
   inner_height = 24,
