@@ -63,6 +63,8 @@ module box_container_with_bins(
   corner_radius,
   separator_width,
 ) {
+  assert(num_bins >= 2, "num_bins must be at least 2");
+
   INNER_WIDTH = bin_width * num_bins + (num_bins-1) * separator_width;
 
   box_container(
