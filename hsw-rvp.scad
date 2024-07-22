@@ -1,4 +1,3 @@
-include <lib/base.scad>
 include <lib/hsw.scad>
 
 // holds a RVP+ 100W charger

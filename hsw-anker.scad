@@ -1,4 +1,3 @@
-include <lib/base.scad>
 include <lib/hsw.scad>
 
 // holds an anker 511 charger (nano pro)
