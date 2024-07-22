@@ -11,8 +11,6 @@ BOX_DEPTH = 145;
 BOX_HEIGHT = 56;
 BOX_THICKNESS = 3;
 
-INNER_WIDTH = BIN_WIDTH * NUM_BINS + (NUM_BINS-1) * SEPARATOR_WIDTH;
-
 difference() {
   box_container_with_bins(
     num_bins = NUM_BINS,
