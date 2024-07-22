@@ -78,3 +78,6 @@ module hsw_hook(path, radius) {
       zrot(90) xrot(90) path_extrude(smooth_path(path, size=1)) circle(r=radius);
   }
 }
+
+HSW_X_DISTANCE = 40.88;
+HSW_Y_DISTANCE = 23.6;
