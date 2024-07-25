@@ -4,9 +4,8 @@ include <base.scad>
 include <hsw/consts.scad>
 include <hsw/primitives.scad>
 
-module hsw_plug() {
+module hsw_plug(length = 10) {
   PLUG_HEIGHT = 13.3;
-  PLUG_LENGTH = 10;
 
   PLUG_CIRCUMCIRCLE_RADIUS = PLUG_HEIGHT * sqrt(3) / 3;
   path = [
@@ -16,7 +15,7 @@ module hsw_plug() {
     ]
   ];
 
-  linear_sweep(make_region(path), height=PLUG_LENGTH) children();
+  linear_sweep(make_region(path), height=length) children();
 }
 
 module hsw_horizontally_spaced(num) {
