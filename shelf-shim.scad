@@ -1,0 +1,22 @@
+INF = 1000;
+EPS = 0.01;
+BOTTOM_WIDTH = 16;
+TOP_WIDTH = 8;
+THICKNESS = 2;
+DEPTH = 20;
+
+HOLE_WIDTH = 4;
+HOLE_HEIGHT = 4;
+HEIGHT = HOLE_HEIGHT + THICKNESS;
+
+difference() {
+  linear_extrude(DEPTH) polygon([
+    [-BOTTOM_WIDTH/2, 0],
+    [BOTTOM_WIDTH/2, 0],
+    [TOP_WIDTH/2, HEIGHT],
+    [-TOP_WIDTH/2, HEIGHT],
+  ]);
+
+  translate([-HOLE_WIDTH/2, HEIGHT-HOLE_HEIGHT+EPS, -INF/2])
+    cube([HOLE_WIDTH, HOLE_HEIGHT, INF]);
+}
