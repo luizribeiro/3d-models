@@ -1,9 +1,9 @@
 include <lib/hsw.scad>
 
-DEPTH = 16.5;
+DEPTH = 19;
 DIAMETER = 38;
 THICKNESS = 2;
-BORDER = 8;
+BORDER = 10;
 
 difference() {
   cylinder(d=DIAMETER + 2*THICKNESS, h=DEPTH + THICKNESS, anchor=CENTER) {
