@@ -11,4 +11,5 @@ difference() {
     position(BACK) orient(BACK) down(10) hsw_plug(length=20);
   }
   up(THICKNESS) cylinder(d=INNER_DIAMETER, h=HEIGHT);
+  down(THICKNESS) cylinder(d=10.5, h=INF);
 }
