@@ -59,7 +59,7 @@ module box_container_with_bins(
 
   intersection() {
     union() for (i = [0:num_bins-2]) {
-      separator_pos = separator_width/2 + INNER_WIDTH / 2
+      separator_pos = separator_width + INNER_WIDTH / 2
           - (i + 1) * (bin_width + separator_width);
       left(separator_pos) fwd(inner_depth/2) up(thickness*2)
         cube([separator_width, inner_depth, inner_height]);
