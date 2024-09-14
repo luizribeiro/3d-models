@@ -30,12 +30,12 @@ module hsw_vertically_spaced(num) {
     translate([0, i * HSW_Y_DISTANCE - y_offset, 0]) children();
 }
 
-module hsw_horizontal_plugs(num_plugs) {
-  hsw_horizontally_spaced(num_plugs) hsw_plug();
+module hsw_horizontal_plugs(num_plugs, length = 10) {
+  hsw_horizontally_spaced(num_plugs) hsw_plug(length = length);
 }
 
-module hsw_vertical_plugs(num_plugs) {
-  hsw_vertically_spaced(num_plugs) hsw_plug();
+module hsw_vertical_plugs(num_plugs, length = 10) {
+  hsw_vertically_spaced(num_plugs) hsw_plug(length = length);
 }
 
 module hsw_box(
