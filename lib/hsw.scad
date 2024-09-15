@@ -5,9 +5,7 @@ include <hsw/consts.scad>
 include <hsw/primitives.scad>
 
 module hsw_plug(length = 10) {
-  PLUG_HEIGHT = 13.3;
-
-  PLUG_CIRCUMCIRCLE_RADIUS = PLUG_HEIGHT * sqrt(3) / 3;
+  PLUG_CIRCUMCIRCLE_RADIUS = HSW_PLUG_HEIGHT * sqrt(3) / 3;
   path = [
     for (i = [0:5]) [
       PLUG_CIRCUMCIRCLE_RADIUS * cos(i * 60),

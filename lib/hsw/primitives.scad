@@ -11,18 +11,27 @@ BOX_EDGES = [
   BACK + LEFT,
 ];
 
+FRONT_BOX_EDGES = [
+  BOTTOM + FRONT,
+  BOTTOM + RIGHT,
+  BOTTOM + LEFT,
+  FRONT + RIGHT,
+  FRONT + LEFT,
+];
+
 module box_container(
   inner_width,
   inner_height,
   inner_depth,
   thickness,
   corner_radius,
+  round_all=true,
 ) {
 
   difference() {
     cuboid(
         [inner_width + thickness * 2, inner_depth + thickness * 2, inner_height + thickness * 2], rounding=corner_radius,
-        edges=BOX_EDGES,
+        edges=round_all ? BOX_EDGES : FRONT_BOX_EDGES,
         anchor=BOTTOM
     ) children();
 
