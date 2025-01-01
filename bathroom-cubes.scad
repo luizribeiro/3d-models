@@ -1,7 +1,16 @@
 include <lib/BOSL2/std.scad>
 
-EPS = 0.01;
+// dimensions in mm
+OUTER_WIDTH = 75.9;
+OUTER_HEIGHT = 75.9;
 
+// these are all standardized, but can be configured if needed
+OUTER_DEPTH = 51.2;
+THICKNESS = 4.2;
+CORNER_RADIUS = 12;
+
+// useful constants
+EPS = 0.01;
 ALL_EDGES = [
   FRONT + RIGHT,
   FRONT + LEFT,
@@ -9,8 +18,8 @@ ALL_EDGES = [
   BACK + LEFT,
 ];
 
-// bottom is 3mm shorter than the top
-BOTTOM_DIFFERENCE = 3;
+// use high $fn if we're rendering
+$fn = $preview ? 32 : 256;
 
 module container(
   inner_width,
@@ -19,6 +28,8 @@ module container(
   thickness,
   corner_radius
 ) {
+  // bottom is 3mm shorter than the top
+  BOTTOM_DIFFERENCE = 3;
 
   difference() {
     prismoid(
@@ -40,9 +51,9 @@ module container(
 }
 
 container(
-  inner_width=67.5,
-  inner_height=47,
-  inner_depth=67.5,
-  thickness=4.2,
-  corner_radius=12
+  inner_width=OUTER_WIDTH - THICKNESS * 2,
+  inner_height=OUTER_DEPTH - THICKNESS,
+  inner_depth=OUTER_HEIGHT - THICKNESS * 2,
+  thickness=THICKNESS,
+  corner_radius=CORNER_RADIUS
 );
