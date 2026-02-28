@@ -1,30 +1,17 @@
 # 3d-models
 
+[![Models Check](https://github.com/luizribeiro/3d-models/actions/workflows/models-check.yml/badge.svg)](https://github.com/luizribeiro/3d-models/actions/workflows/models-check.yml)
+
 A personal collection of 3D-printable models built with [OpenSCAD](https://www.openscad.org/).
+
+We use [devenv](https://devenv.sh/) for development environment management.
 
 ## Repository layout
 
-- `models/` — source `.scad` files
-  - `models/gridfinity/`
-  - `models/hsw/`
-  - `models/misc/`
+- `models/` — source `.scad` model files
 - `lib/` — shared OpenSCAD libraries/wrappers used by models
-- `renders/` — rendered artifacts (`.stl`, `.png`)
-
-## Prerequisites
-
-Recommended (reproducible):
-
-- [devenv](https://devenv.sh/)
-- [direnv](https://direnv.net/)
-
-Then run:
-
-```bash
-direnv allow
-```
-
-This loads the dev shell defined in `devenv.nix` (OpenSCAD, just, etc).
+- `dependencies/` — external assets imported by some models (e.g. STL/SVG)
+- `renders/` — local output directory for generated artifacts (`.stl`, `.png`)
 
 ## Common workflow
 
@@ -64,5 +51,4 @@ just preview gridfinity/jabinco-switch-bin.scad renders/gridfinity/jabinco-switc
 ## Notes
 
 - Treat `.scad` files as the source of truth.
-- Keep generated artifacts under `renders/` when you want to keep them in the repo.
-- If OpenSCAD hangs, kill stale processes and re-run from a clean shell.
+- Generated artifacts should generally stay out of git unless intentionally curated.
