@@ -1,0 +1,38 @@
+name: Models Check
+
+on:
+  pull_request:
+  push:
+    branches: [master]
+  workflow_dispatch:
+
+jobs:
+  list-and-check:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Install Nix
+        uses: cachix/install-nix-action@v31
+
+      - name: Install devenv
+        uses: cachix/install-devenv-action@v1
+
+      - name: Show tool versions (via devenv)
+        run: |
+          devenv shell -- just --version
+          devenv shell -- openscad --version
+
+      - name: List models (via devenv)
+        run: devenv shell -- just list
+
+      - name: Check all models (via devenv)
+        run: |
+          devenv shell -- bash -euo pipefail -c '
+            just list | while read -r model; do
+              echo "Checking ${model}"
+              just check "$model"
+            done
+          '
