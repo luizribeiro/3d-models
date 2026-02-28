@@ -1,4 +1,4 @@
-include <../../lib/hsw.scad>
+include <lib/hsw.scad>
 
 // holds three fanttik nex b8 ace duster tips
 

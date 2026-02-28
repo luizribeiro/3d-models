@@ -1,4 +1,4 @@
-include <../../lib/hsw.scad>
+include <lib/hsw.scad>
 
 DIAMETER = 55;
 THICKNESS = 4;

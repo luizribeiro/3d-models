@@ -1,4 +1,4 @@
-include <../../lib/hsw.scad>
+include <lib/hsw.scad>
 
 hsw_box(
   inner_width = 65.5,

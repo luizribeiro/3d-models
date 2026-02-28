@@ -1,4 +1,4 @@
-include <../../lib/hsw.scad>
+include <lib/hsw.scad>
 
 INNER_WIDTH = 61;
 INNER_DEPTH = 31;

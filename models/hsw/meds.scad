@@ -1,4 +1,4 @@
-include <../../lib/hsw.scad>
+include <lib/hsw.scad>
 
 // holds a 38mm meds canister
 

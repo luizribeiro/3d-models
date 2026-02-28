@@ -1,4 +1,4 @@
-include <../../lib/gridfinity.scad>
+include <lib/gridfinity.scad>
 
 // Carvera Air wired probe shank holder
 // 1x1 Gridfinity bin with 4 shank sockets (2x2 pattern)

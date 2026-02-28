@@ -1,4 +1,4 @@
-include <../../lib/hsw.scad>
+include <lib/hsw.scad>
 
 // holds two alligator adapters for multimeter probes (fluke?)
 

@@ -1,4 +1,4 @@
-include <../../lib/gridfinity.scad>
+include <lib/gridfinity.scad>
 
 // Litorange threaded insert assortment bin
 // Kit in reference image: 14 sizes total

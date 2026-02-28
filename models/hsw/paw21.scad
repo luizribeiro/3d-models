@@ -1,4 +1,4 @@
-include <../../lib/hsw.scad>
+include <lib/hsw.scad>
 
 POST_DIAMETER = 13;
 POST_TIP_DIAMETER = 12.5;

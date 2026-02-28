@@ -1,4 +1,4 @@
-include <../../lib/hsw.scad>
+include <lib/hsw.scad>
 
 // holds nooelec devices like flamingo, lona, ham it up, etc
 

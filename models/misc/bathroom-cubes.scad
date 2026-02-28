@@ -1,4 +1,4 @@
-include <../../lib/BOSL2/std.scad>
+include <lib/BOSL2/std.scad>
 
 // dimensions in mm
 OUTER_WIDTH = 75.9;

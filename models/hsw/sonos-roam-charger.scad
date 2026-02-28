@@ -1,4 +1,4 @@
-include <../../lib/hsw.scad>
+include <lib/hsw.scad>
 
 module sonos() {
   scale(0.74) import(file="dependencies/sonos footprint.svg", center=true);

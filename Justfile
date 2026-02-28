@@ -37,7 +37,7 @@ render model out='':
   fi
 
   mkdir -p "$(dirname "$out")"
-  {{openscad}} -o "$out" "$in"
+  OPENSCADPATH="$PWD:$PWD/lib:${OPENSCADPATH:-}" {{openscad}} -o "$out" "$in"
   echo "$out"
 
 # Fast compile/parse check only (no STL output).
@@ -55,7 +55,20 @@ check model:
   out="/tmp/3d-models-parse/${rel%.scad}.csg"
 
   mkdir -p "$(dirname "$out")"
-  {{openscad}} -o "$out" "$in"
+
+  log="$(mktemp)"
+  if ! OPENSCADPATH="$PWD:$PWD/lib:${OPENSCADPATH:-}" {{openscad}} -o "$out" "$in" 2> >(tee "$log" >&2); then
+    rm -f "$log"
+    exit 1
+  fi
+
+  if grep -q '^WARNING:' "$log"; then
+    echo "error: OpenSCAD warnings found in $in" >&2
+    rm -f "$log"
+    exit 1
+  fi
+
+  rm -f "$log"
   echo "ok: $in"
 
 # Generate ISO/front/side PNG previews (default base: /tmp/3d-models-previews/...; optional explicit base path).
@@ -79,9 +92,9 @@ preview model out_base='':
 
   mkdir -p "$(dirname "$base")"
 
-  {{openscad}} --autocenter --viewall --imgsize=1400,1000 --projection=p --camera=0,0,0,55,0,25,450 -o "${base}-iso.png" "$in"
-  {{openscad}} --autocenter --viewall --imgsize=1400,1000 --projection=p --camera=0,0,0,90,0,0,450 -o "${base}-front.png" "$in"
-  {{openscad}} --autocenter --viewall --imgsize=1400,1000 --projection=p --camera=0,0,0,90,0,90,450 -o "${base}-side.png" "$in"
+  OPENSCADPATH="$PWD:$PWD/lib:${OPENSCADPATH:-}" {{openscad}} --autocenter --viewall --imgsize=1400,1000 --projection=p --camera=0,0,0,55,0,25,450 -o "${base}-iso.png" "$in"
+  OPENSCADPATH="$PWD:$PWD/lib:${OPENSCADPATH:-}" {{openscad}} --autocenter --viewall --imgsize=1400,1000 --projection=p --camera=0,0,0,90,0,0,450 -o "${base}-front.png" "$in"
+  OPENSCADPATH="$PWD:$PWD/lib:${OPENSCADPATH:-}" {{openscad}} --autocenter --viewall --imgsize=1400,1000 --projection=p --camera=0,0,0,90,0,90,450 -o "${base}-side.png" "$in"
 
   echo "${base}-iso.png"
   echo "${base}-front.png"

@@ -33,8 +33,5 @@ module calibration_stairs(
   }
 }
 
-if (step_height) {
-  calibration_stairs(step_height=step_height);
-} else {
-  calibration_stairs(step_height=1.0);
-}
+step_height_arg = is_undef(step_height) ? 1.0 : step_height;
+calibration_stairs(step_height=step_height_arg);

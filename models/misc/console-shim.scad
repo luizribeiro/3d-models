@@ -1,6 +1,6 @@
-include <../../lib/base.scad>
-include <../../lib/BOSL2/std.scad>
-include <../../lib/BOSL2/rounding.scad>
+include <lib/base.scad>
+include <lib/BOSL2/std.scad>
+include <lib/BOSL2/rounding.scad>
 
 WIDTH = 22.5;
 HEIGHT = 45;

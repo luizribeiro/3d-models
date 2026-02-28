@@ -1,4 +1,4 @@
-include <../../lib/gridfinity.scad>
+include <lib/gridfinity.scad>
 
 // Jabinco Switch Bin
 // 2x2 Gridfinity bin for SPST On/Off Mini Boat Rocker Switches.

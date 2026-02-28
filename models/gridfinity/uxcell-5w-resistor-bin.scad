@@ -1,4 +1,4 @@
-include <../../lib/gridfinity.scad>
+include <lib/gridfinity.scad>
 
 // uxcell 5W Metal Oxide Film Resistor Bin
 // Pack: 60 pcs, 6 values -> 39R, 47R, 56R, 75R, 82R, 100R (±5%)
