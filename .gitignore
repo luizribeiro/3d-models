@@ -4,6 +4,9 @@
 !dependencies/*.stl
 output/
 
+# Generated renders/previews (keep source .scad only)
+renders/**/*.png
+
 # Devenv
 .devenv*
 devenv.local.nix
