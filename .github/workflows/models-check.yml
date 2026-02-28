@@ -12,13 +12,19 @@ jobs:
 
     steps:
       - name: Checkout
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Install Nix
         uses: cachix/install-nix-action@v31
 
+      - name: Use devenv Cachix cache
+        uses: cachix/cachix-action@v16
+        with:
+          name: devenv
+
       - name: Install devenv
-        uses: cachix/install-devenv-action@v1
+        shell: bash
+        run: nix profile install nixpkgs#devenv
 
       - name: Show tool versions (via devenv)
         run: |
