@@ -1,22 +1,68 @@
-# luizribeiro/3d-models
+# 3d-models
 
-[![Build Status](https://travis-ci.com/luizribeiro/3d-models.svg?branch=master)](https://travis-ci.com/luizribeiro/3d-models)
+A personal collection of 3D-printable models built with [OpenSCAD](https://www.openscad.org/).
 
-This is a collection of 3D models designed by myself on
-[OpenSCAD](https://www.openscad.org/).
+## Repository layout
 
-## stairs.scad
+- `models/` — source `.scad` files
+  - `models/gridfinity/`
+  - `models/hsw/`
+  - `models/misc/`
+- `lib/` — shared OpenSCAD libraries/wrappers used by models
+- `renders/` — rendered artifacts (`.stl`, `.png`)
 
-This generates staircases which can be helpful for calibration of 3D
-printers. For example, if you want to generate a model for stairs where
-each step has 0.5mm of height, you should run the following command:
+## Prerequisites
 
+Recommended (reproducible):
+
+- [devenv](https://devenv.sh/)
+- [direnv](https://direnv.net/)
+
+Then run:
+
+```bash
+direnv allow
 ```
-openscad -o stairs-0d5mm.stl -D "step_height=0.50" stairs.scad
+
+This loads the dev shell defined in `devenv.nix` (OpenSCAD, just, etc).
+
+## Common workflow
+
+List models:
+
+```bash
+just list
+just list gridfinity
 ```
 
-There are a bunch of parameters on the module itself you can play with.
+Check a model parses/compiles:
 
-### Example Render
+```bash
+just check gridfinity/jabinco-switch-bin.scad
+```
 
-![Render of stairs.scad](renders/stairs.png)
+Render STL:
+
+```bash
+# Default output goes to /tmp/3d-models-renders/...
+just render gridfinity/jabinco-switch-bin.scad
+
+# Or choose an explicit output path
+just render gridfinity/jabinco-switch-bin.scad renders/gridfinity/jabinco-switch-bin.stl
+```
+
+Generate preview PNGs (iso/front/side):
+
+```bash
+# Default output base goes to /tmp/3d-models-previews/...
+just preview gridfinity/jabinco-switch-bin.scad
+
+# Or choose an explicit output base
+just preview gridfinity/jabinco-switch-bin.scad renders/gridfinity/jabinco-switch-bin
+```
+
+## Notes
+
+- Treat `.scad` files as the source of truth.
+- Keep generated artifacts under `renders/` when you want to keep them in the repo.
+- If OpenSCAD hangs, kill stale processes and re-run from a clean shell.
