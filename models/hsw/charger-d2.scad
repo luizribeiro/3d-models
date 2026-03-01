@@ -1,3 +1,5 @@
+// Model purpose: HSW holder for a D2 charger unit, providing a wall-mounted cradle with geometry tailored to the charger body dimensions.
+// Intended for stable vertical storage and quick docking/undocking during charging workflows.
 include <lib/hsw.scad>
 
 INNER_WIDTH = 61;

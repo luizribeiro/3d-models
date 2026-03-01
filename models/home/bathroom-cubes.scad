@@ -1,3 +1,5 @@
+// Model purpose: Bathroom organizer container/cube with rounded tapered walls, intended for countertop storage of small toiletries and daily-use items.
+// Uses a prismoid shell to balance interior volume, wall thickness, and printability while maintaining a clean, finished appearance.
 include <lib/BOSL2/std.scad>
 
 // dimensions in mm

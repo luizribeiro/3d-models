@@ -1,3 +1,5 @@
+// Model purpose: Gridfinity storage bin tailored for ATX 24-pin splitter ZYX-9SP hardware, with dimensions tuned to keep parts organized and easy to pick.
+// Designed to integrate with your Gridfinity base ecosystem so this specific electronic accessory has a repeatable home in the workshop.
 include <lib/gridfinity.scad>
 
 // ATX 24-pin Power Supply Splitter (ZYX-9SP) bin

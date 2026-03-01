@@ -1,3 +1,5 @@
+// Model purpose: Three-part astronomy EL panel mount system (cap, ring, and adapter) used to hold an acrylic diffuser panel and attach it to telescope/optics hardware for flat frames.
+// Includes cable pass-through and screw/nut features so the panel assembly is secure, serviceable, and aligned during astrophotography calibration.
 $fn = 500;
 INCH = 25.4;
 EPS = 0.01;

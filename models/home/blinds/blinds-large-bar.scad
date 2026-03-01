@@ -1,3 +1,5 @@
+// Model purpose: Structural large bar for the motorized blinds assembly, providing a reinforced vertical member and hook features that interface with blind hardware.
+// Includes internal cutouts and cross-ribs to reduce material while preserving stiffness where load is applied.
 screw_bar_depth = 5;
 screw_bar_width = 10;
 screw_bar_height = 120;

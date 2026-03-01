@@ -1,3 +1,5 @@
+// Model purpose: Motor housing block for the motorized blinds mechanism, with internal cutouts and screw passages sized around the selected motor and fasteners.
+// Derived from Motorized MQTT Blinds work and adapted to your dimensions so the motor mounts securely in the blind drive assembly.
 // this is based on thehookup's Motorized MQTT Blinds project:
 // https://github.com/thehookup/Motorized_MQTT_Blinds/blob/master/BlindsBase.scad
 

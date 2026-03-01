@@ -1,3 +1,5 @@
+// Model purpose: HSW holder for a Pentel eraser, giving a small stationery item a dedicated slot so it does not get lost on the bench.
+// Keeps drafting/marking accessories close at hand while preserving a clean workspace.
 include <lib/hsw.scad>
 
 // holds four scope probes

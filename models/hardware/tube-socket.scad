@@ -1,3 +1,5 @@
+// Model purpose: Vacuum tube socket adapter/fixture with center and circular pin holes, modeling the tube pin layout for mounting or prototyping applications.
+// Generates a two-level socket geometry to provide guidance and support around the pin field for easier alignment and handling.
 $fn = 100;
 eps = 1e-2;
 

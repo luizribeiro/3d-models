@@ -1,3 +1,5 @@
+// Model purpose: Primary adapter for a window shades mechanism, translating between the drive shaft profile and the shade-side cylindrical/notched interface.
+// Includes keyed shaft hole and notch pattern so torque is transmitted reliably while maintaining alignment in the shade assembly.
 $fn = 250;
 
 CYLINDER_HEIGHT = 15;

@@ -1,3 +1,5 @@
+// Model purpose: HSW holder for a Fanttik vacuum, creating a mounted parking position with appropriate orientation and plug support.
+// Balances retention and removal force so the vacuum stays put but can be grabbed quickly for cleanup tasks.
 include <lib/hsw.scad>
 
 DIAMETER = 55;

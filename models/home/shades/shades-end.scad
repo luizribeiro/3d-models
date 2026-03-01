@@ -1,3 +1,5 @@
+// Model purpose: End-cap style mount piece for the shades system, including screw holes, hooks, and connector geometry for securing the shade endpoint.
+// Built to match existing fixture dimensions and clip/hook behavior used by your shade hardware.
 $fn = 250;
 epsilon = 0.01;
 PLATE_DIAMETER = 42.6;

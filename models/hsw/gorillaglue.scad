@@ -1,3 +1,5 @@
+// Model purpose: HSW-compatible holder for Gorilla Glue container(s), designed to store adhesive upright and reduce bench clutter.
+// Provides secure retention on the honeycomb wall while keeping labels and cap accessible.
 include <lib/hsw.scad>
 
 // holds an upside down gorilla super glue gel xl

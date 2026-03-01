@@ -1,3 +1,5 @@
+// Model purpose: HSW holder for Staedtler stationery tool(s), designed as a simple wall-mounted organizer for frequent marking/measuring tasks.
+// Integrates with the same modular storage wall to keep non-electronic bench tools equally organized.
 include <lib/hsw.scad>
 
 // holds a staedtler pencil sharpener

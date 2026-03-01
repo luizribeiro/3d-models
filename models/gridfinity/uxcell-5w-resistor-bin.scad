@@ -1,3 +1,5 @@
+// Model purpose: Gridfinity bin for Uxcell 5W resistors, sized for resistor body dimensions and quantities typical in your bench inventory.
+// Provides repeatable storage and labeling-friendly organization for high-wattage resistors alongside other Gridfinity electronics bins.
 include <lib/gridfinity.scad>
 
 // uxcell 5W Metal Oxide Film Resistor Bin

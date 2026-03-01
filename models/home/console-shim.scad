@@ -1,3 +1,5 @@
+// Model purpose: Rounded shim for leveling or spacing a console/desk component in the office, compensating for gap or uneven mounting surfaces.
+// Designed as a robust wedge-like spacer with softened edges for easier handling and better cosmetic finish in visible areas.
 include <lib/base.scad>
 include <lib/BOSL2/std.scad>
 include <lib/BOSL2/rounding.scad>

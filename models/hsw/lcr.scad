@@ -1,3 +1,5 @@
+// Model purpose: HSW holder for an LCR meter, designed to support the instrument body while allowing easy grab-and-go use at the bench.
+// Includes wall plug placement tuned for the meter size and expected handling load.
 include <lib/hsw.scad>
 
 // holds a lcr research's lcr pro case

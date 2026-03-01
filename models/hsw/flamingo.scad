@@ -1,3 +1,5 @@
+// Model purpose: HSW wall holder for the Nooelec Flamingo FM filter used in SDR setups, providing compact and protected storage.
+// Keeps SDR signal-chain accessories organized and visible so they are easy to locate during radio experiments.
 include <lib/hsw.scad>
 
 // holds nooelec devices like flamingo, lona, ham it up, etc

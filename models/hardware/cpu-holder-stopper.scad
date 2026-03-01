@@ -1,3 +1,5 @@
+// Model purpose: Small stopper/retainer part for a CPU holder assembly, intended to prevent movement or disengagement by adding a shaped mechanical catch.
+// This is a replacement/iteration-style utility part designed around an existing holder geometry rather than a standalone product.
 $fn = 100;
 
 union() {

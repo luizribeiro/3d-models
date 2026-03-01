@@ -1,3 +1,5 @@
+// Model purpose: Calibration staircase used to validate printer Z-step consistency and layer-height behavior by generating labeled height increments across a stepped ramp.
+// Useful for quick print-process tuning, dimensional sanity checks, and comparing material/profile behavior on small controlled geometry.
 module calibration_stairs(
   width = 50, // mm
   depth = 10, // mm

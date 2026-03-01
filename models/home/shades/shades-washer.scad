@@ -1,3 +1,5 @@
+// Model purpose: Simple washer/spacer for the shades mechanism, used to tune axial spacing and reduce friction or wobble between moving parts.
+// Sized to the same family of shade components so it can be printed quickly as a fit-adjustment consumable.
 $fn = 250;
 epsilon = 0.01;
 PLATE_DIAMETER = 31.95;

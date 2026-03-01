@@ -1,3 +1,5 @@
+// Model purpose: HSW wall holder for Cynthion hardware, shaped to retain the board/device while exposing it for easy insertion and removal.
+// Provides a dedicated storage location that integrates with the same modular wall system as your other lab tools.
 include <lib/hsw.scad>
 
 // holds a great scott gadgets cynthion

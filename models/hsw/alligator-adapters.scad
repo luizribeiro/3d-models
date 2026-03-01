@@ -1,3 +1,5 @@
+// Model purpose: HSW-compatible holder for alligator clip adapters, keeping clips organized and accessible on the honeycomb storage wall.
+// Part geometry is tuned to grip the adapters while mounting via standard HSW plug features.
 include <lib/hsw.scad>
 
 // holds two alligator adapters for multimeter probes (fluke?)

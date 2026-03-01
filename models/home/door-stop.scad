@@ -1,3 +1,5 @@
+// Model purpose: Printable door stop intended to hold a door open and prevent impacts against walls or furniture in a household/office setting.
+// Geometry combines a stable base with screw holes and angled contact surfaces for secure placement and repeated daily use.
 difference() {
   union() {
     cube([3, 40, 100]);

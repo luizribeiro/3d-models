@@ -1,3 +1,5 @@
+// Model purpose: HSW holder for PortaPack SDR hardware, shaped to retain the unit safely on the honeycomb wall between uses.
+// Aims to protect connectors and controls while maintaining quick access for RF testing sessions.
 include <lib/hsw.scad>
 
 // holds a hackrf portapack h2m

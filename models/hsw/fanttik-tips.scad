@@ -1,3 +1,5 @@
+// Model purpose: HSW accessory holder for Fanttik tips/bit set components, arranged to keep small interchangeable tips grouped and accessible.
+// Prevents tip loss and speeds up tool changes by giving the set a dedicated wall-mounted home.
 include <lib/hsw.scad>
 
 // holds three fanttik nex b8 ace duster tips

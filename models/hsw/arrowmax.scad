@@ -1,3 +1,5 @@
+// Model purpose: HSW-compatible holder for an Arrowmax tool/accessory, creating a purpose-fit slot on the honeycomb storage wall.
+// Designed to reduce bench clutter and keep this frequently used item visible and quickly reachable.
 include <lib/hsw.scad>
 
 hsw_box(

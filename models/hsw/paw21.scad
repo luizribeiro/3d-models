@@ -1,3 +1,5 @@
+// Model purpose: HSW holder for the Engineer PAW-21 tool, creating a purpose-fit wall mount that secures the tool without obstructing grip areas.
+// Designed for frequent use in electronics/mechanical work where fast retrieval and tidy storage matter.
 include <lib/hsw.scad>
 
 POST_DIAMETER = 13;

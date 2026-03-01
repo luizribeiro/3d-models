@@ -1,3 +1,5 @@
+// Model purpose: Controller enclosure/base for the motorized blinds PCB, including standoffs, nut traps, and perimeter walls for secure board mounting.
+// Designed to protect electronics and keep screw alignment consistent while fitting the specific board size used in your blinds project.
 pcb_width = 70;
 pcb_height = 50;
 case_thickness = 3;

@@ -1,3 +1,5 @@
+// Model purpose: HSW holder for oscilloscope probes, with slots and spacing intended to prevent cable tangling and tip damage during storage.
+// Provides a dedicated, quickly accessible place for probes near your measurement station.
 include <lib/hsw.scad>
 
 // holds four scope probes

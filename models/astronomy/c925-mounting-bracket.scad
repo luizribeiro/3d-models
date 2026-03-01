@@ -1,3 +1,5 @@
+// Model purpose: Reshapes an existing Celestron C9.25 mounting bracket STL by trimming a clearance wedge so the bracket fits the intended telescope setup and mechanical constraints.
+// This model imports the original vendor/community STL and performs a subtractive cut, keeping the original geometry while adapting fit for your rig.
 INF = 1000;
 SCALE = 1.1;
 render() difference() {

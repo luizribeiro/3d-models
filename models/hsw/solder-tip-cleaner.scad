@@ -1,3 +1,5 @@
+// Model purpose: HSW mount for a solder tip cleaner container, keeping cleaning media near the soldering area while off the benchtop.
+// Designed for heat-tool workflows where frequent access and stable placement improve ergonomics.
 include <lib/hsw.scad>
 
 DEPTH = 19;

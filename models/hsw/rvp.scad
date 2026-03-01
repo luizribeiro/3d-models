@@ -1,3 +1,5 @@
+// Model purpose: HSW holder for the RVP+ 100W USB-C charger/power device, sized for stable wall mounting and easy daily access.
+// Uses reusable spacing modules so similar power accessories can be adapted with consistent fit and plug geometry.
 include <lib/hsw.scad>
 
 // holds a RVP+ 100W charger

@@ -1,3 +1,5 @@
+// Model purpose: HSW holder for an Anker battery pack, designed to mount the power bank securely on the honeycomb storage wall.
+// Uses clearances and plug spacing appropriate for daily removal/reinsertion without damaging the wall interface.
 include <lib/hsw.scad>
 
 // holds a powercore slim 10000 pd

@@ -1,3 +1,5 @@
+// Model purpose: General-purpose printable standoff with screw through-hole and captive hex-nut pocket for mounting boards or panels with fixed spacing.
+// Useful when you need quick custom-height supports without metal spacers, especially for one-off fixtures and electronics prototypes.
 $fn = 100;
 INF = 10000;
 EPS = 0.01;

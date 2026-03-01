@@ -1,3 +1,5 @@
+// Model purpose: Gridfinity bin for storing Jabinco switches and related small parts, with cavity sizing oriented toward fast sorting and retrieval during electronics work.
+// Helps keep switch inventory visible and contained while remaining compatible with standard Gridfinity footprints and stacking workflow.
 include <lib/gridfinity.scad>
 
 // Jabinco Switch Bin

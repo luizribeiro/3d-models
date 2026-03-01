@@ -1,3 +1,5 @@
+// Model purpose: HSW holder for HackRF SDR hardware, shaped as a protective cradle that mounts via standard wall plug geometry.
+// Helps keep sensitive RF gear organized and separated from loose tools on the work surface.
 include <lib/hsw.scad>
 
 // holds a hackrf

@@ -1,3 +1,5 @@
+// Model purpose: Dovetail mount block for integrating a Pegasus Astro Pocket Powerbox Advance Gen 2 setup into a standard astrophotography dovetail ecosystem.
+// Provides screw holes and a relief channel so the part can be bolted down cleanly while preserving clearance for cabling/strap routing.
 $fn = 100;
 EPS = 1e-2;
 DOVETAIL_LENGTH = 45;

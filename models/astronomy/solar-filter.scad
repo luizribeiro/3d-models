@@ -1,3 +1,5 @@
+// Model purpose: Solar filter accessory parts (cap/lid/ring/cutter) for telescope front-end filtering, sized for your astronomy gear and tape-adjusted diameters.
+// The generated parts help retain and protect filter material while providing repeatable fit on the selected optical tube or guide scope.
 $fn = 500;
 
 // general parameters

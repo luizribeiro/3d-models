@@ -1,3 +1,5 @@
+// Model purpose: HSW holder for glue sticks, giving consumables a fixed wall position so they are available when doing assembly or rework.
+// Sized to prevent sticks from falling out while still allowing quick one-handed retrieval.
 include <lib/hsw.scad>
 
 // holds a bambulab glue stick

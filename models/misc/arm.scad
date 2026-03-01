@@ -1,3 +1,5 @@
+// Model purpose: Legacy modified arm part originally used in a syringe-pump setup, created by importing and trimming an existing STL to improve fit.
+// Kept for archival/reference purposes; this model is no longer actively used in current builds.
 difference() {
   union() {
     translate([-60-90, 0, 0])

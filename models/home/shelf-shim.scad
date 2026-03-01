@@ -1,3 +1,5 @@
+// Model purpose: Trapezoidal shelf shim for compensating uneven gaps and stabilizing shelf or furniture contact points in the office/home.
+// Includes an internal clearance cutout so the shim seats around existing features while still providing load-bearing support.
 INF = 1000;
 EPS = 0.01;
 BOTTOM_WIDTH = 20;

@@ -1,3 +1,5 @@
+// Model purpose: HSW holder for a Sonos Roam charger accessory, creating a tidy wall-mounted dock/storage point.
+// Keeps charging hardware organized and reduces cable clutter in mixed electronics/household spaces.
 include <lib/hsw.scad>
 
 module sonos() {

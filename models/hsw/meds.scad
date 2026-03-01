@@ -1,3 +1,5 @@
+// Model purpose: HSW wall holder for medication containers, providing organized vertical storage and quick access to frequently used items.
+// Part of the same modular wall system, with dimensions chosen to keep containers stable and easy to remove.
 include <lib/hsw.scad>
 
 // holds a 38mm meds canister

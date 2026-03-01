@@ -1,3 +1,5 @@
+// Model purpose: Gridfinity bin for Litorange threaded inserts, dimensioned to keep inserts contained without spilling and easy to scoop during assembly tasks.
+// Built as part of the same modular storage system so hardware stock remains organized and location-consistent across projects.
 include <lib/gridfinity.scad>
 
 // Litorange threaded insert assortment bin

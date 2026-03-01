@@ -1,3 +1,5 @@
+// Model purpose: Base plate used to help assemble a small reaction reactor for catalyst-based experiments, with mounting holes and pass-throughs for attached parts.
+// Designed as a practical fixture component for lab assembly rather than a general-purpose consumer item.
 $fn = 128;
 
 in = 25.4;

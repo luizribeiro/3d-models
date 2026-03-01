@@ -1,3 +1,5 @@
+// Model purpose: Retention ring for the shades assembly that captures and aligns cylindrical components while preserving clearance and an insertion opening.
+// Uses matching notch geometry so it interfaces cleanly with companion adapter parts in the same shades project.
 $fn = 250;
 eps = 0.1;
 

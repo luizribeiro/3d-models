@@ -1,3 +1,5 @@
+// Model purpose: HSW holder for the CurrentWave-DP device (Dothediy), dimensioned to mount the unit neatly on the honeycomb storage wall.
+// Designed for convenient access while keeping the device protected and consistently located in the SDR/electronics workspace.
 include <lib/hsw.scad>
 
 // holds a DoTheDiy's CurrentWave

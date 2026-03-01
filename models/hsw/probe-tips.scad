@@ -1,3 +1,5 @@
+// Model purpose: HSW holder for oscilloscope/multimeter probe tips, organizing small tip accessories in a compact wall-mounted format.
+// Designed to reduce misplaced tips and speed up measurement setup during electronics debugging.
 include <lib/hsw.scad>
 
 // holds two TP88 fluke probe pins

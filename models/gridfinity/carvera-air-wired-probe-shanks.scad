@@ -1,3 +1,5 @@
+// Model purpose: Gridfinity organizer for Carvera Air wired probe shanks, shaped to hold the probes securely while protecting tips and simplifying access during machining setup.
+// Keeps precision probing accessories in a dedicated bin that matches the rest of your Gridfinity workstation layout.
 include <lib/gridfinity.scad>
 
 // Carvera Air wired probe shank holder

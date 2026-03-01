@@ -1,3 +1,5 @@
+// Model purpose: Integrated blinds holder assembly that combines controller base and structural bars into one printable mount for the motorized blinds setup.
+// Acts as the main support structure tying the electronic controller and blind-side mechanical interfaces together.
 use <blinds-controller.scad>;
 use <blinds-large-bar.scad>;
 use <blinds-motor-case.scad>;

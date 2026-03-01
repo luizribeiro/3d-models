@@ -1,3 +1,5 @@
+// Model purpose: Companion small bar/connector piece for the motorized blinds frame, used as a linking or clamping element between larger structural parts.
+// Provides simple printable geometry for quick iteration of fit and fastening in the overall blinds mount stack.
 block_z = 22;
 block_y = 42;
 block_x = 30;

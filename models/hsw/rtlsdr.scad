@@ -1,3 +1,5 @@
+// Model purpose: HSW holder for an RTL-SDR dongle, providing a small protective parking spot on the honeycomb storage wall.
+// Keeps SDR adapters centralized with related RF tools for faster experiment setup.
 include <lib/hsw.scad>
 
 // holds rtl-sdr blog v3 dongle
