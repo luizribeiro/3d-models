@@ -1,6 +1,8 @@
 { pkgs, ... }:
 
 let
+  bambuCli = pkgs.callPackage ./pkgs/bambu-cli { };
+
   scadCheckHook = pkgs.writeShellScript "scad-check-hook" ''
     set -euo pipefail
 
@@ -28,6 +30,7 @@ in
     openscad-lsp
     pre-commit
     just
+    bambuCli
   ];
 
   git-hooks.hooks.scad-check = {
