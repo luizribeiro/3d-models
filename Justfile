@@ -159,3 +159,123 @@ preview model out_base='':
   echo "${base}-iso.png"
   echo "${base}-front.png"
   echo "${base}-side.png"
+
+# Pretty printer + AMS dashboard (with filament color swatches).
+status:
+  #!/usr/bin/env bash
+  set -euo pipefail
+
+  if ! command -v bambu-cli >/dev/null 2>&1; then
+    echo "error: bambu-cli not found in PATH" >&2
+    echo "hint: enter devenv shell or install bambu-cli" >&2
+    exit 1
+  fi
+
+  status_raw="$(bambu-cli status)"
+  ams_raw="$(bambu-cli ams status)"
+
+  state="$(awk -F': ' '/^State:/ {print $2}' <<<"$status_raw")"
+  progress_line="$(awk -F': ' '/^Progress:/ {print $2}' <<<"$status_raw")"
+  temps="$(awk -F': ' '/^Temps:/ {print $2}' <<<"$status_raw")"
+  remaining="$(awk -F': ' '/^Remaining:/ {print $2}' <<<"$status_raw")"
+  file="$(awk -F': ' '/^File:/ {print $2}' <<<"$status_raw")"
+  light="$(awk -F': ' '/^Light:/ {print $2}' <<<"$status_raw")"
+  error="$(awk -F': ' '/^Error:/ {print $2}' <<<"$status_raw")"
+
+  percent="0"
+  progress_suffix=""
+  if [[ "$progress_line" =~ ^([0-9]+)%(.*)$ ]]; then
+    percent="${BASH_REMATCH[1]}"
+    progress_suffix="${BASH_REMATCH[2]}"
+  fi
+
+  declare -a temps_nonzero=()
+  for part in $temps; do
+    if [[ "$part" =~ ^([^=]+)=(-?[0-9]+([.][0-9]+)?)C$ ]]; then
+      label="${BASH_REMATCH[1]}"
+      value="${BASH_REMATCH[2]}"
+      if [[ ! "$value" =~ ^-?0([.]0+)?$ ]]; then
+        temps_nonzero+=("${label}=${value}C")
+      fi
+    fi
+  done
+
+  temps_display=""
+  if (( ${#temps_nonzero[@]} > 0 )); then
+    temps_display="${temps_nonzero[*]}"
+  fi
+
+  bar_width=24
+  fill=$(( percent * bar_width / 100 ))
+  empty=$(( bar_width - fill ))
+  printf -v fill_bar '%*s' "$fill" ''
+  fill_bar="${fill_bar// /█}"
+  printf -v empty_bar '%*s' "$empty" ''
+  empty_bar="${empty_bar// /░}"
+
+  swatch() {
+    local hex="$1"
+    hex="${hex#\#}"
+    hex="${hex^^}"
+    if [[ ${#hex} -eq 8 ]]; then
+      hex="${hex:0:6}"
+    fi
+
+    if [[ ! "$hex" =~ ^[0-9A-F]{6}$ ]]; then
+      printf '??'
+      return
+    fi
+
+    local r=$((16#${hex:0:2}))
+    local g=$((16#${hex:2:2}))
+    local b=$((16#${hex:4:2}))
+    printf '\033[48;2;%d;%d;%dm  \033[0m' "$r" "$g" "$b"
+  }
+
+  echo "Bambu printer"
+  echo "────────────────────────────────────────────────────────────────"
+  printf "State:      %s\n" "${state:-unknown}"
+  printf "Progress:   %s %s%%%s\n" "${fill_bar}${empty_bar}" "$percent" "$progress_suffix"
+  if [[ -n "$temps_display" ]]; then
+    printf "Temps:      %s\n" "$temps_display"
+  fi
+  printf "Remaining:  %s\n" "${remaining:-unknown}"
+  printf "Light:      %s\n" "${light:-unknown}"
+  if [[ -n "$error" && ! "$error" =~ ^0+$ ]]; then
+    printf "Error:      %s\n" "$error"
+  fi
+  printf "File:       %s\n" "${file:-unknown}"
+  echo ""
+  echo "AMS"
+  echo "────────────────────────────────────────────────────────────────"
+
+  current_ams=""
+  while IFS= read -r line; do
+    if [[ "$line" =~ ^AMS[[:space:]]+([0-9]+):[[:space:]]humidity=([^[:space:]]+)[[:space:]]temp=([^[:space:]]+) ]]; then
+      current_ams="${BASH_REMATCH[1]}"
+      humidity="${BASH_REMATCH[2]}"
+      temp="${BASH_REMATCH[3]}"
+      echo "  • AMS ${current_ams}  humidity=${humidity}  temp=${temp}°C"
+      continue
+    fi
+
+    if [[ "$line" =~ ^[[:space:]]*tray[[:space:]]+([0-9]+): ]]; then
+      tray="${BASH_REMATCH[1]}"
+      name_part="${line#*name=}"
+      name="${name_part%% type=*}"
+
+      material=""
+      color=""
+      [[ "$line" =~ type=([^[:space:]]+) ]] && material="${BASH_REMATCH[1]}"
+      [[ "$line" =~ color=([0-9A-Fa-f]{6,8}) ]] && color="${BASH_REMATCH[1]}"
+
+      block="$(swatch "$color")"
+      if [[ -n "$name" ]]; then
+        printf "      - tray %s  %b  %-8s  %-10s (%s)\n" "$tray" "$block" "$material" "$name" "$color"
+      else
+        printf "      - tray %s  %b  %-8s  %s\n" "$tray" "$block" "$material" "$color"
+      fi
+    fi
+  done <<<"$ams_raw"
+
+  echo ""
