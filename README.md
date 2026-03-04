@@ -45,6 +45,16 @@ just bambu gridfinity/jabinco-switch-bin.scad
 just bambu renders/some-model.stl
 ```
 
+- Set `BAMBU_STUDIO_APP` if your app name/path is custom.
+
+Show printer + AMS status (including filament color swatches):
+
+```bash
+just status
+```
+
+- Requires `bambu-cli` to be configured with your printer profile/access code.
+
 Generate preview PNGs (iso/front/side):
 
 ```bash
