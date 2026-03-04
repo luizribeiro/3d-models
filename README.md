@@ -38,6 +38,13 @@ just render gridfinity/jabinco-switch-bin.scad
 just render gridfinity/jabinco-switch-bin.scad renders/gridfinity/jabinco-switch-bin.stl
 ```
 
+Open in Bambu Studio (STL directly, or SCAD rendered first):
+
+```bash
+just bambu gridfinity/jabinco-switch-bin.scad
+just bambu renders/some-model.stl
+```
+
 Generate preview PNGs (iso/front/side):
 
 ```bash

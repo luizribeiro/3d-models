@@ -40,6 +40,66 @@ render model out='':
   OPENSCADPATH="$PWD:$PWD/lib:${OPENSCADPATH:-}" {{openscad}} -o "$out" "$in"
   echo "$out"
 
+# Open STL in Bambu Studio, or render SCAD to STL first then open.
+bambu file:
+  #!/usr/bin/env bash
+  set -euo pipefail
+
+  in="{{file}}"
+
+  if [[ ! -f "$in" && -f "{{models_dir}}/{{file}}" ]]; then
+    in="{{models_dir}}/{{file}}"
+  fi
+
+  if [[ ! -f "$in" ]]; then
+    echo "error: file not found: {{file}}" >&2
+    exit 1
+  fi
+
+  ext="${in##*.}"
+  ext="${ext,,}"
+
+  case "$ext" in
+    stl)
+      target="$in"
+      ;;
+    scad)
+      if [[ "$in" == "{{models_dir}}"/* ]]; then
+        rel="${in#{{models_dir}}/}"
+        target="/tmp/3d-models-renders/${rel%.scad}.stl"
+      else
+        target="/tmp/3d-models-renders/$(basename "${in%.scad}").stl"
+      fi
+
+      mkdir -p "$(dirname "$target")"
+      OPENSCADPATH="$PWD:$PWD/lib:${OPENSCADPATH:-}" {{openscad}} -o "$target" "$in"
+      ;;
+    *)
+      echo "error: unsupported extension '$ext' (expected .stl or .scad)" >&2
+      exit 1
+      ;;
+  esac
+
+  app="${BAMBU_STUDIO_APP:-}"
+  if [[ -n "$app" ]]; then
+    open -a "$app" "$target"
+  else
+    if open -a "Bambu Studio" "$target" 2>/dev/null; then
+      :
+    elif open -a "BambuStudio" "$target" 2>/dev/null; then
+      :
+    elif [[ -d "/Applications/Bambu Studio.app" ]]; then
+      open -a "/Applications/Bambu Studio.app" "$target"
+    elif [[ -d "/Applications/BambuStudio.app" ]]; then
+      open -a "/Applications/BambuStudio.app" "$target"
+    else
+      echo "error: could not find Bambu Studio app. Set BAMBU_STUDIO_APP to the app name/path (e.g. BAMBU_STUDIO_APP='BambuStudio')." >&2
+      exit 1
+    fi
+  fi
+
+  echo "$target"
+
 # Fast compile/parse check only (no STL output).
 check model:
   #!/usr/bin/env bash
