@@ -270,10 +270,18 @@ status:
       [[ "$line" =~ color=([0-9A-Fa-f]{6,8}) ]] && color="${BASH_REMATCH[1]}"
 
       block="$(swatch "$color")"
+      color_display="$color"
+      if [[ "$color_display" =~ ^[0-9A-Fa-f]{8}$ ]]; then
+        color_display="${color_display:0:6}"
+      fi
+      if [[ -n "$color_display" ]]; then
+        color_display="#${color_display^^}"
+      fi
+
       if [[ -n "$name" ]]; then
-        printf "      - tray %s  %b  %-8s  %-10s (%s)\n" "$tray" "$block" "$material" "$name" "$color"
+        printf "      - tray %s  %b  %-8s  %-10s (%s)\n" "$tray" "$block" "$material" "$name" "$color_display"
       else
-        printf "      - tray %s  %b  %-8s  %s\n" "$tray" "$block" "$material" "$color"
+        printf "      - tray %s  %b  %-8s  %s\n" "$tray" "$block" "$material" "$color_display"
       fi
     fi
   done <<<"$ams_raw"
